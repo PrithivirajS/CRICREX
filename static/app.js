@@ -1,0 +1,2 @@
+document.querySelectorAll('input[type="datetime-local"]').forEach((input) => { if (!input.value) { const now = new Date(); now.setMinutes(now.getMinutes() - now.getTimezoneOffset()); input.min = now.toISOString().slice(0,16); } });
+document.querySelectorAll('form').forEach(form => form.addEventListener('submit', () => { const btn=form.querySelector('button[type="submit"],button:not([type])'); if(btn && !btn.disabled) { btn.dataset.originalText=btn.textContent; btn.textContent='Working…'; } }));
