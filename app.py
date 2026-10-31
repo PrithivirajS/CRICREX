@@ -9,6 +9,8 @@ DB_PATH = os.environ.get('CRICREX_DB', os.path.join(BASE_DIR, 'cricrex.db'))
 app = Flask(__name__)
 app.secret_key = os.environ.get('SECRET_KEY', 'change-this-before-deployment')
 
+print ("app.secret_key ")
+
 SCHEMA = '''
 CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, email TEXT UNIQUE NOT NULL, password_hash TEXT NOT NULL, role TEXT NOT NULL DEFAULT 'captain', location TEXT DEFAULT '', created_at TEXT NOT NULL);
 CREATE TABLE IF NOT EXISTS teams (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, location TEXT NOT NULL, captain_id INTEGER NOT NULL, logo_url TEXT DEFAULT '', created_at TEXT NOT NULL, FOREIGN KEY(captain_id) REFERENCES users(id));
